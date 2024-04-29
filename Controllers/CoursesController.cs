@@ -97,8 +97,8 @@ namespace AspTwo.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+           /* if (ModelState.IsValid)
+            {*/
                 try
                 {
                     _context.Update(course);
@@ -116,7 +116,7 @@ namespace AspTwo.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+           /* }*/
             ViewData["FkTeacherId"] = new SelectList(_context.Teachers, "TeacherId", "TeacherId", course.FkTeacherId);
             return View(course);
         }
