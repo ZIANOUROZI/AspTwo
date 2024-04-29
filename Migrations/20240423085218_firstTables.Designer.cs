@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspTwo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240423084258_newtables22")]
-    partial class newtables22
+    [Migration("20240423085218_firstTables")]
+    partial class firstTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,16 +57,13 @@ namespace AspTwo.Migrations
                     b.Property<int>("FkTeacherId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CourseClassId");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("FkTeacherId");
 
                     b.ToTable("CourseClasses");
                 });
@@ -144,13 +141,13 @@ namespace AspTwo.Migrations
 
             modelBuilder.Entity("AspTwo.Models.CourseClass", b =>
                 {
-                    b.HasOne("AspTwo.Models.Teacher", "Teacher")
+                    b.HasOne("AspTwo.Models.Teacher", "Teachers")
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("FkTeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Teacher");
+                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("AspTwo.Models.Enrollment", b =>

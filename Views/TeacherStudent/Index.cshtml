@@ -1,0 +1,8 @@
+﻿@model List<Teacher>
+<h4>Läraren som undervisar programmering1</h4>
+<div>
+	@foreach(var teacher in Model)
+	{
+		<p>@teacher.TeacherName</p>
+	}
+</div>

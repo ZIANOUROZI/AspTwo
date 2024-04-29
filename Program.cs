@@ -18,7 +18,7 @@ namespace AspTwo
 
             
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddRazorPages();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

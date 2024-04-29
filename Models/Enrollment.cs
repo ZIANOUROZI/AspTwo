@@ -16,7 +16,7 @@ namespace AspTwo.Models
     {
         [Key]
         public int EnrollmentId { get; set; }
-        public Grade Grades { get; set; }
+        public Grade? Grades { get; set; }
 
         [ForeignKey("Students")]
         public int FkStudentId { get; set; }

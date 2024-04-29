@@ -1,0 +1,33 @@
+﻿@model List<AllViewModel>
+<h4>TeacherName</h4>
+<h4>StudentName</h4>
+<div>
+
+	@foreach(var item in Model)
+	{
+		
+		<p>
+			<strong>@item.studentName</strong>
+			@{
+				if (item.teachers.Count > 1)
+				{
+					<span>har lärarna: </span>
+				}
+				else
+				{
+					<span>har läraren: </span>
+				}
+
+				@foreach (var teacher in item.teachers)
+				{
+					<strong>@teacher.TeacherName</strong>
+					@if(!teacher.Equals(item.teachers.Last()))
+					{
+						<span>och </span>
+					}
+				}
+			}
+
+		</p>
+	}
+</div>

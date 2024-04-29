@@ -5,7 +5,7 @@
 namespace AspTwo.Migrations
 {
     /// <inheritdoc />
-    public partial class newtables22 : Migration
+    public partial class firstTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,15 +43,14 @@ namespace AspTwo.Migrations
                     CourseClassId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FkTeacherId = table.Column<int>(type: "int", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false)
+                    FkTeacherId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CourseClasses", x => x.CourseClassId);
                     table.ForeignKey(
-                        name: "FK_CourseClasses_Teachers_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_CourseClasses_Teachers_FkTeacherId",
+                        column: x => x.FkTeacherId,
                         principalTable: "Teachers",
                         principalColumn: "TeacherId",
                         onDelete: ReferentialAction.Cascade);
@@ -105,9 +104,9 @@ namespace AspTwo.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CourseClasses_TeacherId",
+                name: "IX_CourseClasses_FkTeacherId",
                 table: "CourseClasses",
-                column: "TeacherId");
+                column: "FkTeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_FkTeacherId",
